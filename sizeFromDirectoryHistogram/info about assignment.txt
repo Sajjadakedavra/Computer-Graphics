@@ -1,0 +1,2 @@
+The program takes raw input size or a directory (in our case, directories containing documents, images, and videos) and outputs a bar graph
+of consumed space.
