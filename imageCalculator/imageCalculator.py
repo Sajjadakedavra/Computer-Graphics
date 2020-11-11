@@ -9,6 +9,7 @@ from PIL import Image
 import sys
 import skimage.io
 import skimage.viewer
+import numpy as np
 
 def imgTry1():
     im = Image.open(r'C:\Users\Sajjad\Desktop\tree.jpg')
@@ -43,23 +44,55 @@ def pixelCreation():
     print("image saved!")
     
     
+    
+def imageDivide(array, array2):
+    array3 = np.ceil(np.divide(array, array2, out=np.zeros_like(array), where = array2!=0))
+    newArray = np.array(array3, np.uint8)
+    return newArray
+
+def imageAdd(array, array2):
+    array3 = np.add(array, array2)
+    newArray = np.array(array3, np.uint8)
+    return newArray
+
+def imageSubtract(array, array2):
+    array3 = np.subtract(array, array2)
+    newArray = np.array(array3, np.uint8)
+    return newArray
+
+def imageMultiply(array, array2):
+    array3 = np.multiply(array, array2)
+    newArray = np.array(array3, np.uint8)
+    return newArray
+    
+
 def imgArrayShape():
-    import numpy as np
+    #import numpy as np
     img = Image.open(r'C:\Users\Sajjad\Desktop\tree.jpg')
-    array = np.array(img)
+    array = np.array(img, dtype=np.float64)
+    
     #array = array.transpose(2,0,1).reshape(3,-1)
     print(array.shape)
-    print(array[:3,:3])      
-    #array[:200,:400] = [255, 128, 0]
+    print(array[:10,:10])      
+    
     print("----------------------------")
+    
     img2 = Image.open(r'C:\Users\Sajjad\Desktop\mountains.jpg')
-    array2 = np.array(img2)
+    array2 = np.array(img2, dtype=np.float64)
+    print(array2.shape)
+    print(array2[:10,:10])
     
-    array3 = np.add(array, array2) #add, multiply, subtract, divide
-    print(array3[:3,:3])
+    print("----------------------------")
     
-    img = Image.fromarray(array3)
-    img.save(r"C:\Users\Sajjad\Desktop\cgecking.jpg")
+    #array3 = np.ceil(np.divide(array, array2, out=np.zeros_like(array), where = array2!=0))
+    #newArray = np.array(array3, np.uint8)
+    
+    newArray = imageMultiply(array, array2)
+    print(newArray.shape)
+    print(newArray[:10,:10])
+    
+    img = Image.fromarray(newArray)
+    img.save(r"C:\Users\Sajjad\Desktop\cgecking5.jpg")
 
 imgArrayShape()
     
@@ -72,7 +105,8 @@ imgArrayShape()
 #https://www.pythoninformer.com/python-libraries/numpy/numpy-and-images/
 #https://datacarpentry.org/image-processing/aio/index.html
 #https://homepages.inf.ed.ac.uk/rbf/HIPR2/pixmult.htm
-
+#https://stackoverflow.com/questions/26248654/how-to-return-0-with-divide-by-zero
+#https://stackoverflow.com/questions/48948308/cant-use-on-numpy-array
 
 
 
