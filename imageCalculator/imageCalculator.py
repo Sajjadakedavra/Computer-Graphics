@@ -10,6 +10,7 @@ import sys
 import skimage.io
 import skimage.viewer
 import numpy as np
+from pathlib import Path
 
 
 def imgTry1():
@@ -93,6 +94,8 @@ def imgArrayShape():
     
     img = Image.open(r'C:\Users\Sajjad\Desktop\tree.jpg')
     #img = Image.open(fileLocation1)
+    #path = Path(fileLocation1)
+    #img = Image.open(path)
     array = np.array(img, dtype=np.float64)
     
     #array = array.transpose(2,0,1).reshape(3,-1)
@@ -103,6 +106,8 @@ def imgArrayShape():
     
     img2 = Image.open(r'C:\Users\Sajjad\Desktop\mountains.jpg')
     #img2 = Image.open(fileLocation2)
+    #path2 = Path(fileLocation2)
+    #img2 = Image.open(path2)
     array2 = np.array(img2, dtype=np.float64)
     print(array2.shape)
     print(array2[:10,:10])
@@ -130,7 +135,12 @@ def imgArrayShape():
     
     img = Image.fromarray(newArray)
     img.save(r"C:\Users\Sajjad\Desktop\cgecking10.jpg")
-
+    finalImg = Image.open(r"C:\Users\Sajjad\Desktop\cgecking10.jpg")
+    photo = ImageTk.PhotoImage(finalImg.resize((380,216)))
+    newlabel = tk.Label(image=photo)
+    newlabel.image = photo
+    newlabel.place(x=540, y=310)
+    #img.save(r"E:\sajjad university\6th semester\CG\imageCalculator\checking.jpg")
 #imgArrayShape()
 
 
@@ -157,7 +167,7 @@ def browse2(master):
     fileLocation2 = master.filename
     print(fileLocation2)
     labelfl2 = tk.Label(master, text = fileLocation2)
-    labelfl2.place(x=400, y=250)
+    labelfl2.place(x=400, y=210)
     img = Image.open(fileLocation2)
     photo = ImageTk.PhotoImage(img.resize((190,108)))
     newlabel = tk.Label(image=photo)
@@ -173,6 +183,7 @@ def browse2(master):
 #def createGui():
 import tkinter as tk
 master = tk.Tk()
+master.title("Image Calculator")
 
 canvas_width = 1000
 canvas_height = 600
@@ -209,7 +220,7 @@ popupMenu.place(x=320, y=145)
 
 selectedOp = tkvar.get()
 performOpButton = tk.Button(master, text = "Perform Operation", command = lambda: imgArrayShape())
-performOpButton.place(x=320, y=190)
+performOpButton.place(x=200, y=190)
 
 
 
