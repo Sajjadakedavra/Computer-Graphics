@@ -50,7 +50,7 @@ def faceDetectAndAlterProps():
         cv2.rectangle(image, (x, y), (x+w, y+h), (0, 255, 0), 2)
     
     cv2.imshow("Faces found", image)
-    cv2.imwrite(r'E:\sajjad university\6th semester\computer graphics\binaryToGrayAndFaceDetection\try.png', image)
+    cv2.imwrite(r'E:\sajjad university\6th semester\computer graphics\try.png', image)
     print("---------")
     cv2.waitKey(0)
     

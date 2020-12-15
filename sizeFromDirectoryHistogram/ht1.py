@@ -8,11 +8,12 @@ import tkinter as tk
 from tkinter import ttk
 import matplotlib.pyplot as plt
 import numpy as np
+from PIL import Image, ImageTk
 
 window = tk.Tk()
  
-window.title("Python Tkinter Text Box")
-window.minsize(600,400)
+window.title("Free space graphing utility")
+window.minsize(700,500)
  
 def clickMe():
     imagesSize = name.get()
@@ -60,6 +61,13 @@ def clickMe():
     
     myFig = plot(y_pos, performance, 0.5, objects)
     myFig.savefig(r'C:\Users\Sajjad\Desktop\plot.png')
+    
+    
+    img = Image.open(r'C:\Users\Sajjad\Desktop\plot.png')
+    photo = ImageTk.PhotoImage(img.resize((450,268)))
+    newlabel = tk.Label(image=photo)
+    newlabel.image = photo
+    newlabel.place(x=20, y=200)
     
     #top = tk.Toplevel()
     #diagrams = tk.PhotoImage(file=myFig)

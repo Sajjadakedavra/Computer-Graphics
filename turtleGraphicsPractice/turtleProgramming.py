@@ -78,9 +78,40 @@ def circleFace():
     tina.circle(35)
     
     
-circleFace()
+#circleFace()
 
-
+def nameIni():
+    tina.speed(0)
+    tina.penup()
+    tina.goto(20, 20)
+    tina.pendown()
+    tina.goto(0, 20)
+    tina.goto(0, 0)
+    tina.goto(20, 0)
+    tina.goto(20, -20)
+    tina.goto(0, -20)
+    
+    
+    tina.penup()
+    
+    tina.goto(40, 0)
+    tina.pendown()
+    tina.goto(40, 20)
+    tina.goto(60, 20)
+    tina.goto(60, 0)
+    tina.goto(40, 0)
+    tina.goto(40, -20)
+    tina.goto(40, 0)
+    tina.right(45)
+    tina.forward(30)
+    
+    tina.penup()
+    tina.hideturtle()
+    
+    
+    turtle.done()
+    
+#nameIni()
 
 
 
